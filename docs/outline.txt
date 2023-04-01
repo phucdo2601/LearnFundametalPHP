@@ -1,0 +1,11 @@
+Study Map of learning PHP for OOP Programming:
+    1. Class
+    2. Access Range
+    3. Extends
+    4. static
+    5. Trait
+    6. Namespace
+    6. Magic Methods (__construct, __destruct, __get, __set, __callStatic)
+    7. Call Multi method
+    8. Interface
+    9, Abstract class
