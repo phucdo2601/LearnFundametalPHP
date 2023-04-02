@@ -18,3 +18,10 @@ Class - Object:
 
     - Tu khoa $this dung de truy cap cac phuong thuc, cac bien trong , mot class
     - Muon su dung mot hang so cua mot class trong php, thi chi can goi ten ClassName::NAME_CONSTANT
+
+    + Kiem tra thuoc tinh ton tai:
+        - C1: Kien tra bang ham isset() hoac empty()
+        - C2: Kien tra thuoc tinh bang ham property_exists()
+
+    + Kiem tra phuong thuc ton tai:
+        - C1: dung ham method_exists(name_instance_obj, 'name_func')

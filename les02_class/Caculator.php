@@ -1,5 +1,7 @@
 <?php
 
+namespace Demo;
+
 class Calculator
 {
     /**
@@ -7,6 +9,8 @@ class Calculator
      */
     public $number_a;
     public $number_b;
+
+    public $number_c = 30;
 
     //khai bao hang so
     const _MSG_CONTENT = 'Ket qua la: {value}';
@@ -101,6 +105,11 @@ class Calculator
     public function showResult($msg, $value)
     {
         echo str_replace('{value}', $value, $msg);
+    }
+
+    public function showMsg()
+    {
+        return __CLASS__;
     }
 }
 $a = new Calculator(4, 78);
