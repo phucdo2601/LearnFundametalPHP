@@ -12,6 +12,8 @@ class Calculator
 
     public $number_c = 30;
 
+    private $math;
+
     private $username;
     private $password;
 
@@ -20,10 +22,14 @@ class Calculator
 
     public function __construct($number_a, $number_b, $username, $password)
     {
+        var_dump('Ham Khoi tao');
         $this->number_a = $number_a;
         $this->number_b = $number_b;
         $this->username = $username;
         $this->password = $password;
+        $this->math = new Math();
+
+        // var_dump($this->math);
     }
 
     public function __getNumberA()
@@ -148,5 +154,19 @@ class Calculator
         } else {
             var_dump('Not valid');
         }
+    }
+
+    public function sqrt($number)
+    {
+        if (is_float($number)) {
+            return $this->math->sqrt($number);
+        }
+
+        return 0;
+    }
+
+    public function __destruct()
+    {
+        var_dump('Ham Huy');
     }
 }

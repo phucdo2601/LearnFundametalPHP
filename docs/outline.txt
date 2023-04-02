@@ -31,3 +31,8 @@ Phạm vi truy cập: Trong lt hướng đối tượng có 3 phạm vi truy c�
     + prottected: Cho phep truy cap o class ke thua
     + private: Chi duoc phep truy cap trong class
 
+Phương thức khởi tạo và phương thức hủy trong OOP
+    + Trong OOP luôn tồn tại 2 phương thức đặc biệt: __construct() và __destruct()
+    + __construct() sẽ đc chạy đầu tiên khi khởi chạy tạo đối tượng => Gọi là phương thức khởi tạo
+    + __destruct() sẽ chạy sau khi chương trình chạy xong (Đối tượng không được sử dụng nữa) => gọi là phương thức hủy
+
