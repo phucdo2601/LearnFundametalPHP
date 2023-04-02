@@ -37,24 +37,64 @@ class Calculator
         $this->number_b = $number_b;
     }
 
-    public function makeAdd($number_a, $number_b)
+    public function getParams($valueA, $valueB)
     {
+        if ($valueA == 0) {
+            $valueA = $this->__getNumberA();
+        }
+        if ($valueB == 0) {
+            $valueB = $this->__getNumberB();
+        }
+
+        return [
+            'valueA' => $valueA,
+            'valueB' => $valueB,
+        ];
+    }
+
+    //dat gia tri mac dinh cho bien truyen vao
+    public function makeAdd($number_a = 0, $number_b = 0)
+    {
+        // if ($number_a == 0) {
+        //     $number_a = $this->__getNumberA();
+        // }
+        // if ($number_b == 0) {
+        //     $number_b = $this->__getNumberB();
+        // }
+
+        $paramsArr = $this->getParams($number_a, $number_b);
+
+        $number_a = $paramsArr['valueA'];
+        $number_b = $paramsArr['valueB'];
+
         $res = $number_a + $number_b;
         return $res;
     }
 
     public function makeMinus($number_a, $number_b)
     {
+        $paramsArr = $this->getParams($number_a, $number_b);
+
+        $number_a = $paramsArr['valueA'];
+        $number_b = $paramsArr['valueB'];
         return $number_a - $number_b;
     }
 
     public function makeMultiply($number_a, $number_b)
     {
+        $paramsArr = $this->getParams($number_a, $number_b);
+
+        $number_a = $paramsArr['valueA'];
+        $number_b = $paramsArr['valueB'];
         return $number_a * $number_b;
     }
 
     public function makeDivide($number_a, $number_b)
     {
+        $paramsArr = $this->getParams($number_a, $number_b);
+
+        $number_a = $paramsArr['valueA'];
+        $number_b = $paramsArr['valueB'];
         return $number_b > 0 ? $number_a / $number_b : 'Khong chia cho so 0';
     }
 

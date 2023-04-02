@@ -15,3 +15,6 @@ Class - Object:
     - Object: thuc the la mo hinh hos viet trien khai cua mot lop thiet ke
     - Trong class se co thuoc tinh(bien), phuong thuc (ham), hang so (khai bao bang tu khoa const) 
     - Hieu thuc te hon: Class chinh la dong goi: bien ham hang so de su dung chat che hon
+
+    - Tu khoa $this dung de truy cap cac phuong thuc, cac bien trong , mot class
+    - Muon su dung mot hang so cua mot class trong php, thi chi can goi ten ClassName::NAME_CONSTANT
