@@ -1,6 +1,6 @@
 <?php
 
-use Demo\Calculator;
+// use Demo\Calculator;
 
 require_once 'les02_class/Caculator.php';
 

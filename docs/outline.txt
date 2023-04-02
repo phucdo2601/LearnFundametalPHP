@@ -25,3 +25,9 @@ Class - Object:
 
     + Kiem tra phuong thuc ton tai:
         - C1: dung ham method_exists(name_instance_obj, 'name_func')
+
+Phạm vi truy cập: Trong lt hướng đối tượng có 3 phạm vi truy cập
+    + public: Cho phép truy cập ở mọi vị trí(trong và ngoài class)
+    + prottected: Cho phep truy cap o class ke thua
+    + private: Chi duoc phep truy cap trong class
+

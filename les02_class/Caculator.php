@@ -1,6 +1,6 @@
 <?php
 
-namespace Demo;
+// namespace Demo;
 
 class Calculator
 {
@@ -12,13 +12,18 @@ class Calculator
 
     public $number_c = 30;
 
+    private $username;
+    private $password;
+
     //khai bao hang so
     const _MSG_CONTENT = 'Ket qua la: {value}';
 
-    public function __construct($number_a, $number_b)
+    public function __construct($number_a, $number_b, $username, $password)
     {
         $this->number_a = $number_a;
         $this->number_b = $number_b;
+        $this->username = $username;
+        $this->password = $password;
     }
 
     public function __getNumberA()
@@ -31,6 +36,18 @@ class Calculator
         return $this->number_b;
     }
 
+    public function __getUsername()
+    {
+        // return $this->username;
+        $this->showInfo('username', $this->username);
+    }
+
+    public function __getPassword()
+    {
+        // return $this->password;
+        $this->showInfo('password', $this->password);
+    }
+
     public function __setNumberA($number_a)
     {
         $this->number_a = $number_a;
@@ -39,6 +56,16 @@ class Calculator
     public function __setNumberB($number_b)
     {
         $this->number_b = $number_b;
+    }
+
+    public function __setUsername($username)
+    {
+        $this->username = $username;
+    }
+
+    public function __setPassword($password)
+    {
+        $this->password = $password;
     }
 
     public function getParams($valueA, $valueB)
@@ -111,15 +138,15 @@ class Calculator
     {
         return __CLASS__;
     }
+
+    public function showInfo($type, $value)
+    {
+        if ($type == 'username') {
+            var_dump('Username: ' . $value);
+        } elseif ($type == 'password') {
+            var_dump('Password: ' . $value);
+        } else {
+            var_dump('Not valid');
+        }
+    }
 }
-$a = new Calculator(4, 78);
-$a->number_a = 15;
-$a->number_b = 5;
-$res = $a->makeAdd($a->__getNumberA(), $a->__getNumberB());
-var_dump($res);
-
-echo '<hr/>';
-
-echo '<h3> Thong bao ket qua: </h3>';
-
-$a->showResult($a::_MSG_CONTENT, $a->makeAdd($a->__getNumberA(), $a->__getNumberB()));
