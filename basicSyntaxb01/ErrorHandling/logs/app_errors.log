@@ -1,0 +1,6 @@
+2023-05-27 11:49:06 - Error: [512], callDivision(): The divisor can not be zero! in D:\TuHocLapTrinh\php\fundamental\v7.4\Fundamental\les01\basicSyntaxb01\ErrorHandling\01WriteFileLog.php on line 6, Variables:Array
+(
+    [x] => 10
+    [y] => 0
+)
+
