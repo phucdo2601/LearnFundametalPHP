@@ -131,7 +131,58 @@ $str = "It's an <b>amazing</b> story.";
 
 //The implode() function join array elements into a single string.
 // Sample array
-$array = array("one", "two", "three", "four", "five");
+// $array = array("one", "two", "three", "four", "five");
 
-// Creating comma separated string from array elements
-echo implode("-", $array);
+// // Creating comma separated string from array elements
+// echo implode("-", $array);
+
+//md5 _calculates the MD5 (Message Digest Algorithm 5) hash of a string.
+// $str = "Sparrow";
+
+// //Calculating the hash
+// echo md5($str);
+
+// Calculating the distance
+// echo levenshtein("flour", "flower")."<br>";
+// echo levenshtein("weight", "wait")."<br>";
+// echo levenshtein("hour", "our");
+
+//The parse_str() function parses a query string into variables.
+// Sample String
+// $str = "name=Harry&age=18";
+
+// Parsing query string
+// parse_str($str, $result);
+// echo $result["name"]; // Outputs: Harry
+// echo $result["age"];  // Outputs: 18 
+
+// The quoted_printable_decode() function convert a quoted-printable string to an 8-bit ASCII string.
+// $str = "Hello=0AWorld!"; // "=0A" represent line feed or new line
+// echo quoted_printable_decode($str);
+
+// The quoted_printable_encode() function convert a 8 bit string to a quoted-printable string.
+// $str = "Hello\nWorld!"; // "\n" represent line feed or new line
+// echo quoted_printable_encode($str);
+
+// Set locale
+// setlocale(LC_ALL, "en_US");
+
+// // Get current locale setting
+// echo setlocale(LC_ALL, 0);
+
+// Sample strings
+// echo substr_compare("Hello world","world",6);
+
+// The substr_replace() function replaces text within a portion of a string.
+// $str = "Fairyland";
+// $replacement = "Horror";
+
+// // Replacing the substring
+// echo substr_replace($str, $replacement, 0, 5);
+
+// The wordwrap() function wraps a string into new lines when it reaches the specified length.
+// Sample string
+$str = "The word incomprehensibilities is very long.";
+
+// Wrapping the string
+echo wordwrap($str, 8, "<br>\n", true);
