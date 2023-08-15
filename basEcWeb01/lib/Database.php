@@ -1,4 +1,8 @@
 <?php
+    include_once '../config/config.php';
+?>
+
+<?php
 class Database
 {
     public $host   = DB_HOST;
