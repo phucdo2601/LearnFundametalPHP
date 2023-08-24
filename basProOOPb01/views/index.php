@@ -27,7 +27,7 @@ $list_data = $productService->getAllProducts();
 
     <div class="contanier">
         <h1>List Products</h1>
-
+        <a class="btn btn-primary" href="addProduct.php">Add New</a>
         <hr>
 
         <table class="table">

@@ -1,30 +1,15 @@
 <?php
 require_once '../services/productService.php';
 $productService = new ProductService();
-$id = $_GET['id'];
-$edit_data = $productService->getProductById($id);
-$item_id=null;
-$item_brand = null;
-$item_name= null;
-$item_price = null;
-$item_image = null;
-$item_register = null;
 
-foreach($edit_data as $x => $val) {
-    $item_id = $val['item_id'];
-    $item_brand = $val['item_brand'];
-    $item_name = $val['item_name'];
-    $item_price = $val['item_price'];
-    $item_image = $val['item_image'];
-    $item_register = $val['item_register'];
-}
+
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // var_dump($_POST);
         // var_dump($_FILES);
         // die();
-        $updateProduct = $productService->updateProduct($_POST, $_FILES, $id);
-        header('Location: index.php');
+        $addNewProduct = $productService->addNewProduct($_POST, $_FILES);
+        // header('Location: index.php');
     }
 ?>
 
@@ -43,14 +28,14 @@ foreach($edit_data as $x => $val) {
     <?php include_once './components/navbar.php' ?>
 
     <div class="contanier">
-        <h1>Edit Product</h1>
+        <h1>Add Product</h1>
 
         <hr>
         <?php 
-                        if (isset($updateProduct)) {
+                        if (isset($addNewProduct)) {
                             ?>
                                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                <strong><?=$updateProduct?></strong>
+                                <strong><?=$addNewProduct?></strong>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -71,17 +56,17 @@ foreach($edit_data as $x => $val) {
 
             <div class="mb-3">
                 <label for="productTitle" class="form-label">Product Name</label>
-                <input type="text" class="form-control" id="itemName" name="item_name" value="<?php echo $item_name ?>">
+                <input type="text" class="form-control" id="itemName" name="item_name" >
             </div>
 
             <div class="mb-3">
                 <label for="productTitle" class="form-label">Product Brand</label>
-                <input type="text" class="form-control" id="itemBrand" name="item_brand" value="<?php echo $item_brand ?>">
+                <input type="text" class="form-control" id="itemBrand" name="item_brand" >
             </div>
 
             <div class="mb-3">
                 <label for="productTitle" class="form-label">Product Price</label>
-                <input type="text" class="form-control" id="itemPrice" name="item_price" value="<?php echo $item_price ?>">
+                <input type="text" class="form-control" id="itemPrice" name="item_price" >
             </div>
 
         </div>
