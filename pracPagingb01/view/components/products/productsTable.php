@@ -1,7 +1,8 @@
+<form action="" method="GET">
 <div class="container">
     <div class="px-4 text-center">
-        <div>
-            <form action="" method="GET" class="row gx-2">
+        <div class="row gx-2">
+            
                 <div class="col">
                     <div class="p-4">
                         Seach:
@@ -16,7 +17,7 @@
                             foreach ($listProducts as $key => $value) {
 
                             ?>
-                                <option value="<?= $value['item_id'] ?>"><?= $value['item_name'] ?></option>
+                                <option value="<?= $value['item_id'] ?>" <?php if ($value['item_id'] == $item_id) echo "selected=\"selected\""; ?>><?= $value['item_name'] ?></option>
 
                             <?php
 
@@ -34,7 +35,7 @@
                             foreach ($listUsers as $key => $value) {
 
                             ?>
-                                <option value="<?= $value['user_id'] ?>"><?= $value['first_name'] . ' ' . $value['last_name'] ?></option>
+                                <option value="<?= $value['user_id'] ?>" <?php if ($value['user_id'] == $user_id) echo "selected=\"selected\""; ?>><?= $value['first_name'] . ' ' . $value['last_name'] ?></option>
 
                             <?php
 
@@ -48,7 +49,7 @@
                         <button type="button" class="btn btn-primary" onclick="this.form.submit()">Search</button>
                     </div>
                 </div>
-            </form>
+           
         </div>
     </div>
 
@@ -89,11 +90,11 @@
 
 
 
-    <div>
-        <form action="" method="GET" class="row">
+    <div class="row">
+       
             <div class="col">
                 <select class="form-select" aria-label="Default select example" style="width: 200px" name="records" onchange="this.form.submit()">
-                    <option value=$page selected>Open this select menu</option>
+                    <option value="null" selected>Open this select menu</option>
                     <?php
                     for ($i = 5; $i <= 10; $i = $i + 5) {
 
@@ -113,7 +114,11 @@
                         for ($i = 1; $i <= $page_nums; $i++) {
 
                         ?>
-                            <li class="page-item"><a class="page-link" href="?page=<?= $i ?>&records=<?= $records ?>"><?= $i ?></a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page=<?= $i ?>&records=<?= $records ?>"><?= $i ?></a>
+                            
+                            
+                            </li>
                         <?php
                             # code...
                         }
@@ -121,6 +126,7 @@
                     </ul>
                 </nav>
             </div>
-        </form>
+        
     </div>
 </div>
+</form>

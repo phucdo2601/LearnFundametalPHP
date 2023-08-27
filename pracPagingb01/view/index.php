@@ -32,21 +32,22 @@
         $user_id = $_GET['user_id'];
     }
 
+    var_dump($_GET);
+
     if ($_GET) {
         if ($item_id && $user_id) {
+            var_dump("search by user_id and item_id");
             $listCarts = $cartService->searchDataPaging($user_id, $item_id, $page, $records);
-        }
-
-        if ($page && $records) {
-            $listCarts = $cartService->searchDataPaging(null, null, $page, $records);
+        } elseif ($page && $records) {
+            $listCarts = $cartService->searchDataPaging(0, 0, $page, $records);
         }
         elseif ($records) {
-            $listCarts = $cartService->searchDataPaging(null, null, $page, $records);
+            $listCarts = $cartService->searchDataPaging(0, 0, $page, $records);
         }elseif ($page) {
-            $listCarts = $cartService->searchDataPaging(null, null, $page, $records);
+            $listCarts = $cartService->searchDataPaging(0, 0, $page, $records);
         }
     } else {
-        $listCarts = $cartService->searchDataPaging();
+        $listCarts = $cartService->searchDataPaging(0,0,1,3);
     }
 
     

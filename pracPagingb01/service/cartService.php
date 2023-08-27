@@ -10,11 +10,12 @@
 
         public function searchDataPaging($user_id = 0, $item_id = 0, $page_num = 1, $page_row = 3) {
             
-    // var_dump($user_id);
-    // var_dump($item_id);
-            
             if ($page_row == 'null') {
                 $page_row = 3;
+            }
+
+            if ($page_num == 'null') {
+                $page_row = 1;
             }
             
             if ($page_num < 0) {
@@ -25,6 +26,17 @@
                 $page_row = 3;
             }
 
+            if ($item_id == 'null' && $user_id == 'null') {
+                $modelResult = array(
+                    'data' => [],
+                    'page_nums' => 0,
+                    'total_records' => 0
+                );
+    
+                return $modelResult;
+            }
+
+            
             $queryCartAll = "select * from cart";
             $listAll = $this->db->select($queryCartAll);
             $countAll = $listAll->rowCount();
@@ -34,24 +46,29 @@
 
             $queryPaging = null;
 
-            if (isset($user_id) && isset($item_id)) {
-                $queryPaging = "select c.cart_id, c.item_id, c.user_id, p.item_brand, p.item_image, p.item_name, p.item_price, u.first_name, u.last_name
-                from cart c left join product p on c.item_id = p.item_id
-                left join user u on c.user_id = u.user_id
-                Where c.item_id = $item_id and c.user_id = $user_id
-                LIMIT $start_limit, $page_row";
-            } elseif (isset($user_id)) {
-                $queryPaging  = "select c.cart_id, c.item_id, c.user_id, p.item_brand, p.item_image, p.item_name, p.item_price, u.first_name, u.last_name
-                from cart c left join product p on c.item_id = p.item_id
-                left join user u on c.user_id = u.user_id
-                Where c.user_id = $user_id
-                LIMIT $start_limit, $page_row";
-            } elseif (isset($item_id)) {
-                $queryPaging  = "select c.cart_id, c.item_id, c.user_id, p.item_brand, p.item_image, p.item_name, p.item_price, u.first_name, u.last_name
-                from cart c left join product p on c.item_id = p.item_id
-                left join user u on c.user_id = u.user_id
-                Where c.item_id = $item_id
-                LIMIT $start_limit, $page_row";
+            if ($user_id > 0 || $item_id > 0) {
+                if (is_numeric($user_id) && is_numeric($item_id)) {
+                    $queryPaging = "select c.cart_id, c.item_id, c.user_id, p.item_brand, p.item_image, p.item_name, p.item_price, u.first_name, u.last_name
+                    from cart c left join product p on c.item_id = p.item_id
+                    left join user u on c.user_id = u.user_id
+                    Where c.item_id = $item_id and c.user_id = $user_id
+                    LIMIT $start_limit, $page_row";
+                    $page_nums = ceil($this->db->select("select * from cart where item_id = $item_id and user_id = $user_id")->rowCount()/$page_row);
+                } elseif (is_numeric($user_id)) {
+                    $queryPaging  = "select c.cart_id, c.item_id, c.user_id, p.item_brand, p.item_image, p.item_name, p.item_price, u.first_name, u.last_name
+                    from cart c left join product p on c.item_id = p.item_id
+                    left join user u on c.user_id = u.user_id
+                    Where c.user_id = $user_id
+                    LIMIT $start_limit, $page_row";
+                    $page_nums = ceil($this->db->select("select * from cart where user_id = $user_id")->rowCount()/$page_row);
+                } elseif (is_numeric($item_id)) {
+                    $queryPaging  = "select c.cart_id, c.item_id, c.user_id, p.item_brand, p.item_image, p.item_name, p.item_price, u.first_name, u.last_name
+                    from cart c left join product p on c.item_id = p.item_id
+                    left join user u on c.user_id = u.user_id
+                    Where c.item_id = $item_id
+                    LIMIT $start_limit, $page_row";
+                    $page_nums = ceil($this->db->select("select * from cart where item_id = $item_id")->rowCount()/$page_row);
+                }
             } else {
                 $queryPaging = "select c.cart_id, c.item_id, c.user_id, p.item_brand, p.item_image, p.item_name, p.item_price, u.first_name, u.last_name
                 from cart c left join product p on c.item_id = p.item_id
@@ -72,4 +89,3 @@
         }
 
     }
-?>
