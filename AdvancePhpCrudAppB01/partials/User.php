@@ -39,12 +39,45 @@
 
 
         //function to get rows
+        public function getRows($start = 0, $limit = 4) {
+            $sql = "select * from {$this->tableName} ORDER BY DESC LIMIT {$start}, {$limit}";
+            $stmt =$this->conn->prepare($sql);
+            $stmt->execute();
 
+            if ($stmt->rowCount() > 0) {
+                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                $results = [];
+            }
+
+            return $results;
+        }
 
         // function to get single row
+        public function getRow($field, $value) {
+            $sql = "select * from {$this->tableName} where {$field} = :{$value}";
+            $stmt =$this->conn->prepare($sql);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            } else {
+                $result = [];
+            }
+
+            return $result;
+        }
 
 
         // function to count number of rows
+        public function getCount() {
+            $sql = "select count(*) as pcount from {$this->tableName}";
+            $stmt =$this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $result['pcount'];
+        }
 
 
         //function to upload photo
