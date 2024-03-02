@@ -1,0 +1,1 @@
+<h1 style="text-align: center;">Learn Self Laravel v 10.x.x</h1>
