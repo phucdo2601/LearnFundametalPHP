@@ -1,0 +1,6 @@
+Muốn biết môi trường php của bạn đang dự định phát triển phù hợp với version laravel nào thì cần phải lên doc laravel check những điều tiên quyết để chạy được dự án laravel.
+	VD: Trong trương hợp này, môi trường đang muốn hướng đến để phát triển là PHP version 7.4. thì mình lên check laravel doc thì thấy ứng với php v7.* thì có thể phát triển dự án laravel v7
+
+Cậu lệnh create laravel project với phiên bản xác định là:
+		composer create-project --prefer-dist laravel/laravel my-project-name "LARAVEL_VERSION"
+		ex: composer create-project --prefer-dist laravel/laravel my-project-name "7.*" (trong trường hợp mình phát triển trên php v7 thì câu lệnh sẽ như vậy)
