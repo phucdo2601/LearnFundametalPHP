@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
-Route::get('/samplePage', function() {
-    return view('sample');
-});
+Route::get('/user', 'UserController@index');
