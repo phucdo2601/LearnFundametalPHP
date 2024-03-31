@@ -11,3 +11,7 @@ Re-install vendor folder for composer project:
 		composer update
 
 Thì chúng ta check lại version php có thích hợp với project đang phát triển hay không rồi thiếp lập môi trường phù hợp với project đang phát triển
+
+------------------------------------------------------------------------------------
+Trường hợp connect db không thành công(dựng môi trường mysql on docker) thì chúng ta cần chỉnh lại các cổng security của db lai:
+	https://stackoverflow.com/questions/50379839/connection-java-mysql-public-key-retrieval-is-not-allowed
