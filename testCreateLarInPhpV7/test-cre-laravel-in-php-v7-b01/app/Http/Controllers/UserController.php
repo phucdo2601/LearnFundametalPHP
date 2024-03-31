@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,9 +24,40 @@ class UserController extends Controller
         //     "test04@gmail.com"
         // ]);
 
-        $users = DB::select("select * from users");
+        // $users = DB::select("select * from users");
         // return view('home');
 
-        return $users;
+        // return $users;
+
+
+        $user = new User();
+
+        // dd($user);
+
+        /**
+         * USING ORM for CRUD function with db
+         */
+
+        // insert
+        // $user->name = "testName05";
+        // $user->email = "testEmail05@gmail.com";
+        // $user->password = bcrypt("12345678");
+        // $user->save();
+
+        // select all
+        // $users = User::all();
+        // return $users;
+
+        //delete
+        // User::where('id', 6)->delete();
+
+        // return view('home');
+
+        //update
+        // User::where('id', 7)->update([
+        //     'name'  => 'testName-up-05'
+        // ]);
+
+        // return view('home');
     }
 }
