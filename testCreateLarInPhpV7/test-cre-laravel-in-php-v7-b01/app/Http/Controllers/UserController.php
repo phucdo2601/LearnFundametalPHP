@@ -59,5 +59,18 @@ class UserController extends Controller
         // ]);
 
         // return view('home');
+
+        //  Mass Assignment Security
+        $data_ins = [
+            'name' => 'testName08',
+            'email' => 'testEmail08@gmail.com',
+            'password' => "12345678",
+        ];
+
+        User::create($data_ins);
+
+        $listUsers = User::all();
+
+        return $listUsers;
     }
 }
