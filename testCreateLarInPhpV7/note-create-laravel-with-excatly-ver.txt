@@ -4,3 +4,10 @@ Muốn biết môi trường php của bạn đang dự định phát triển ph
 Cậu lệnh create laravel project với phiên bản xác định là:
 		composer create-project --prefer-dist laravel/laravel my-project-name "LARAVEL_VERSION"
 		ex: composer create-project --prefer-dist laravel/laravel my-project-name "7.*" (trong trường hợp mình phát triển trên php v7 thì câu lệnh sẽ như vậy)
+
+Re-install vendor folder for composer project:
+	Trong trường hợp re-install bằng các câu lệnh:
+		composer install
+		composer update
+
+Thì chúng ta check lại version php có thích hợp với project đang phát triển hay không rồi thiếp lập môi trường phù hợp với project đang phát triển

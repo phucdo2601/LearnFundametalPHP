@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+    mysql:
+        image: mysql
+        ports:
+            - 3329:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: 12345678
+            MYSQL_USER: phucdn
+            MYSQL_PASSWORD: 12345678A@
+            MYSQL_DATABASE: test_learn_laravel_7_b01
+        volumes:
+            - .docker/setup.sql:/docker-entrypoint-initdb.d/setup.sql
+            - db_data:/var/lib/mysql
+volumes:
+    db_data:
