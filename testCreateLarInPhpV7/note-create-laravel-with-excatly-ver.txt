@@ -5,6 +5,23 @@ Cậu lệnh create laravel project với phiên bản xác định là:
 		composer create-project --prefer-dist laravel/laravel my-project-name "LARAVEL_VERSION"
 		ex: composer create-project --prefer-dist laravel/laravel my-project-name "7.*" (trong trường hợp mình phát triển trên php v7 thì câu lệnh sẽ như vậy)
 
+Một số câu lệnh create laravel with excatly version:
+Via composer installing specific version 10.*
+
+composer create-project laravel/laravel project_name
+using composer installing specific version 9.*
+
+composer create-project laravel/laravel:^9.* project_name
+using composer installing specific version 8.*
+
+composer create-project laravel/laravel:^8.* project_name
+using composer installing specific version 7.*
+
+composer create-project --prefer-dist laravel/laravel:^7.0 project_name
+To install specific version 6.* and below use the following command:
+
+composer create-project --prefer-dist laravel/laravel project_name "6.*"
+
 Re-install vendor folder for composer project:
 	Trong trường hợp re-install bằng các câu lệnh:
 		composer install
