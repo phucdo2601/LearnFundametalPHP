@@ -8,13 +8,11 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                    <form action="/upload" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" name="image" />
+                        <input type="submit" value="Upload" />
+                    </form>
                 </div>
             </div>
         </div>
