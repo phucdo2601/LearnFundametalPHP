@@ -75,4 +75,20 @@ class UserController extends Controller
 
         return $listUsers;
     }
+
+    public function uploadAvartar(Request $request)
+    {
+        // $request->image->store('images', 'public');
+        $fileName = "";
+        $currentDate = date("Y-m-d");
+        if ($request->hasFile('image')) {
+            $fileName = $request->image->getClientOriginalName() + $currentDate;
+        }
+
+        $request->image->storeAs('images', $fileName, 'public');
+
+        User::find(1)->update(['avartar' => $fileName]);
+
+        return redirect()->back();
+    }
 }
