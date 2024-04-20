@@ -82,7 +82,7 @@ class UserController extends Controller
         $fileName = "";
         $currentDate = date("Y-m-d");
         if ($request->hasFile('image')) {
-            $fileName = $request->image->getClientOriginalName() + $currentDate;
+            $fileName =  'img-' . $currentDate . '-' . $request->image->getClientOriginalName();
         }
 
         $request->image->storeAs('images', $fileName, 'public');
