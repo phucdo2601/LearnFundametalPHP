@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -47,5 +48,21 @@ class User extends Authenticatable
     //     return 'My name is: ' . ucfirst($name);
     // }
 
+    public static function uploadAvartar($image)
+    {
+        $fileName = "";
+        $currentDate = date("Y-m-d");
+        $fileName =  'img-' . $currentDate . '-' . $image->getClientOriginalName();
+        (new self)->deleteOldImage();
+        $image->storeAs('images', $fileName, 'public');
 
+        auth()->user()->update(['avartar' => $fileName]);
+    }
+
+    protected function deleteOldImage()
+    {
+        if ($this->avartar) {
+            Storage::delete('/public/images/' . auth()->user()->avartar);
+        }
+    }
 }

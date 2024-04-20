@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -80,16 +81,9 @@ class UserController extends Controller
     {
         // $request->image->store('images', 'public');
         if ($request->hasFile('image')) {
-            $fileName = "";
-            $currentDate = date("Y-m-d");
-            $fileName =  'img-' . $currentDate . '-' . $request->image->getClientOriginalName();
-            $request->image->storeAs('images', $fileName, 'public');
-
-            auth()->user()->update(['avartar' => $fileName]);
+            User::uploadAvartar($request->image);
+            return redirect()->back();
         }
-
-
-
         return redirect()->back();
     }
 }
