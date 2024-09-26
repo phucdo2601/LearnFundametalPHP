@@ -79,11 +79,14 @@ class UserController extends Controller
 
     public function uploadAvartar(Request $request)
     {
-        // $request->image->store('images', 'public');
         if ($request->hasFile('image')) {
             User::uploadAvartar($request->image);
+
+            $request->session()->flash('message', 'Image uploaded.');
+
             return redirect()->back();
         }
+        $request->session()->flash('error', 'Image not uploaded.');
         return redirect()->back();
     }
 }
