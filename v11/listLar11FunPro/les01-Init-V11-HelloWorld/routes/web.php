@@ -26,10 +26,14 @@ Route::get('/', function () {
 //     return view('about', ['name' => $name]);
 // });
 
-Route::get('user', [UserController::class, "getUser"]);
+// Route::get('user', [UserController::class, "getUser"]);
 
-Route::get('aboutUser/{name}', [UserController::class, 'aboutUser']);
+// Route::get('aboutUser/{name}', [UserController::class, 'aboutUser']);
 
-Route::get('testDetailsUser', [UserController::class, "getUserDetailPage"]);
+// Route::get('testDetailsUser', [UserController::class, "getUserDetailPage"]);
 
-Route::get('admin/loginPage/{name}', [UserController::class, "getAdminLoginPage"]);
+// Route::get('admin/loginPage/{name}', [UserController::class, "getAdminLoginPage"]);
+
+Route::view('home', 'home');
+Route::view('about', "les11about");
+Route::get('user-home', [UserController::class, "getUserHome"]);
