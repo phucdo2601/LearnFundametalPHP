@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\PdfController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/invoice', [InvoiceController::class, 'generateInvoice']);
+Route::get('/pdf-from-view', [PdfController::class, 'generatePdf']);
+
+Route::get("/view-tempcase", [PdfController::class, 'getTempCase']);
