@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello world from Laravel 11</h1>
+    <p>This is the testing first page</p>
 </body>
 </html>
