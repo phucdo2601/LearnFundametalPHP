@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Flasher\Prime\FlasherInterface;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
