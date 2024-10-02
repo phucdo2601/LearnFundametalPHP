@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Flasher\Prime\FlasherInterface;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     // [Function for vieing categories]
     public function view_category() {
-        return view('admin.category');
+        $data = Category::all();
+
+        return view('admin.category', compact('data'));
     }
 
     // [Function for creating category]
