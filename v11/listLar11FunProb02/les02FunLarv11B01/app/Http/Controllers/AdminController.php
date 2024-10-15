@@ -8,14 +8,16 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     // [Function for vieing categories]
-    public function view_category() {
+    public function view_category()
+    {
         $data = Category::all();
 
         return view('admin.category', compact('data'));
     }
 
     // [Function for creating category]
-    public function add_category(Request $request) {
+    public function add_category(Request $request)
+    {
         $category = new Category;
         $category->category_name = $request->category;
 
@@ -24,6 +26,18 @@ class AdminController extends Controller
         flash()
             ->option('timeout', 3000)
             ->success('Add Category was completed successfully.');
+
+        return redirect()->back();
+    }
+
+    public function delete_category($id)
+    {
+        $data = Category::find($id);
+        $data->delete();
+
+        flash()
+            ->option('timeout', 3000)
+            ->success('Delete Category was completed successfully.');
 
         return redirect()->back();
     }

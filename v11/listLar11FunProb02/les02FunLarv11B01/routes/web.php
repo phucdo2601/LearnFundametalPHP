@@ -21,17 +21,25 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('admin/dashboard', [HomeController::class, 'index'])->middleware([
-    'auth', 'admin'
+    'auth',
+    'admin'
 ]);
 
 // Category Routes
 Route::get('view_category', [AdminController::class, 'view_category'])->middleware(([
-    'auth', 'admin'
+    'auth',
+    'admin'
 ]));
 
 Route::post('add_category', [AdminController::class, 'add_category'])->middleware([
-    'auth', 'admin'
+    'auth',
+    'admin'
+]);
+
+Route::get('delete_category/{id}', [AdminController::class, 'delete_category'])->middleware([
+    'auth',
+    'admin'
 ]);
