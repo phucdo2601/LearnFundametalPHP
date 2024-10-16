@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class AdminController extends Controller
 {
@@ -60,5 +61,40 @@ class AdminController extends Controller
             ->success('Update Category was completed successfully.');
 
         return redirect('/view_category');
+    }
+
+    public function add_product()
+    {
+        $list_all_cates = Category::all();
+
+        return view('admin.add_product', compact('list_all_cates'));
+    }
+
+    public function upload_product(Request $request)
+    {
+        $data = new Product;
+
+        $data->title = $request->title;
+        $data->description = $request->description;
+        $data->price = $request->tipricetle;
+        $data->quantity = $request->quantity;
+        $data->category = $request->category;
+
+        $image = $request->image;
+
+        if ($image) {
+            $imagename = time() . "." . $image->getClientOriginalExtension();
+            $request->image->move('products', $imagename);
+
+            $data->image = $imagename;
+        }
+
+        $data->save();
+
+        flash()
+            ->option('timeout', 3000)
+            ->success('Add Product was completed successfully.');
+
+        return redirect()->back();
     }
 }
