@@ -76,7 +76,7 @@ class AdminController extends Controller
 
         $data->title = $request->title;
         $data->description = $request->description;
-        $data->price = $request->tipricetle;
+        $data->price = $request->price;
         $data->quantity = $request->quantity;
         $data->category = $request->category;
 
@@ -96,5 +96,11 @@ class AdminController extends Controller
             ->success('Add Product was completed successfully.');
 
         return redirect()->back();
+    }
+
+    public function view_product()
+    {
+        $list_products = Product::all();
+        return view('admin.view_product', compact('list_products'));
     }
 }

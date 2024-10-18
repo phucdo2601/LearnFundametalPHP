@@ -63,3 +63,8 @@ Route::post("upload_product", [AdminController::class, 'upload_product'])->middl
     'auth',
     'admin'
 ]);
+
+Route::get("view_product", [AdminController::class, 'view_product'])->middleware([
+    'auth',
+    'admin'
+]);
