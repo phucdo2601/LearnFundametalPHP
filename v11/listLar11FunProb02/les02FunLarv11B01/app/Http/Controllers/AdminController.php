@@ -122,4 +122,48 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
+    public function update_product($productId)
+    {
+        $data = Product::find($productId);
+        $list_all_cates = Category::all();
+
+        return view('admin.update_pro_page', compact('data', 'list_all_cates'));
+    }
+
+    public function edit_product(Request $request, $productId)
+    {
+        $data = Product::find($productId);
+
+        $data->title = $request->title;
+        $data->description = $request->description;
+        $data->price = $request->price;
+        $data->quantity = $request->quantity;
+        $data->category = $request->category;
+
+        $image = $request->image;
+
+        if ($image) {
+            // delete old images
+            $oldimages = public_path('products/' . $data->image);
+            if (file_exists($oldimages)) {
+                # code...
+                unlink($oldimages);
+            }
+
+            $imagename = time() . "." . $image->getClientOriginalExtension();
+
+            $request->image->move('products', $imagename);
+
+            $data->image = $imagename;
+        }
+
+        $data->save();
+
+        flash()
+            ->option('timeout', 3000)
+            ->success('Update Product was completed successfully.');
+
+        return redirect('/view_product');
+    }
 }

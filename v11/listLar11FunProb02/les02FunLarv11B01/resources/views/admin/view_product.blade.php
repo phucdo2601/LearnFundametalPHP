@@ -64,6 +64,9 @@
                             Price
                         </th>
                         <th>
+                            Edit
+                        </th>
+                        <th>
                             Delete
                         </th>
                     </tr>
@@ -79,8 +82,15 @@
                             <img src="products/{{$product->image}}" alt="Product Image" height="120" width="120">
                         </td>
                         <td>
+                            <a href="{{ url('update_product', [$product->id]) }}" class="btn btn-success">
+                                Edit
+                            </a>
+                        </td>
+                        <td>
                             <a class="btn btn-danger" onclick="confirmation(event)" href="{{ url('delete_product', [$product->id]) }}">Delete</a>
                         </td>
+
+
                     </tr>
                     @endforeach
 

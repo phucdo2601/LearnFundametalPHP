@@ -73,3 +73,13 @@ Route::get("delete_product/{productId}", [AdminController::class, 'delete_produc
     'auth',
     'admin'
 ]);
+
+Route::get("update_product/{productId}", [AdminController::class, 'update_product'])->middleware([
+    'auth',
+    'admin'
+]);
+
+Route::post('edit_product/{productId}', [AdminController::class, 'edit_product'])->middleware([
+    'auth',
+    'admin'
+]);
