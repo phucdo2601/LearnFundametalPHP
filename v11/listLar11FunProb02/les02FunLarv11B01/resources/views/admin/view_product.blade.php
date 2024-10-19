@@ -24,7 +24,7 @@
             td {
                 border: 1px solid skyblue;
                 text-align: center;
-
+                color: white
             }
         </style>
     </head>
@@ -68,7 +68,7 @@
                     @foreach ($list_products as $product)
                     <tr>
                         <td>{{$product->title}}</td>
-                        <td>{{$product->description}}</td>
+                        <td>{!! Str::words($product->description, 1, ' ...') !!}</td>
                         <td>{{$product->category}}</td>
                         <td>{{$product->price}}</td>
                         <td>{{$product->quantity}}</td>
@@ -82,6 +82,12 @@
                 </table>
             </div>
 
+            <div class="div_deg">
+                {{
+                    $list_products->onEachSide(1)->links()
+                }}
+            </div>
+            
           </div>
         </div>
         
