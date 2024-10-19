@@ -63,6 +63,9 @@
                         <th>
                             Price
                         </th>
+                        <th>
+                            Delete
+                        </th>
                     </tr>
 
                     @foreach ($list_products as $product)
@@ -74,6 +77,9 @@
                         <td>{{$product->quantity}}</td>
                         <td>
                             <img src="products/{{$product->image}}" alt="Product Image" height="120" width="120">
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" onclick="confirmation(event)" href="{{ url('delete_product', [$product->id]) }}">Delete</a>
                         </td>
                     </tr>
                     @endforeach
@@ -104,5 +110,28 @@
     <script src="{{asset('admincss/vendor/jquery-validation/jquery.validate.min.js')}}"></script>
     <script src="{{asset('admincss/js/charts-home.js')}}"></script>
     <script src="{{asset('admincss/js/front.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script type="text/javascript">
+        function confirmation(e) {
+          e.preventDefault();
+          
+          var urlToRedirect = e.currentTarget.getAttribute('href');
+          console.log(urlToRedirect);
+      
+          swal({
+            title: "Are you sure to delete this?",
+            text: "You will not be able to recover this category!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willCancel) => {
+            if (willCancel) {
+              window.location.href = urlToRedirect;
+            }
+          })
+        }
+    </script>
   </body>
 </html>
