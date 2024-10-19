@@ -26,6 +26,15 @@
                 text-align: center;
                 color: white
             }
+
+            input[type='search'] {
+                width: 500px;
+                height: 60px;
+                margin-left: 500px;
+
+            }
+
+
         </style>
     </head>
 
@@ -41,6 +50,11 @@
       <div class="page-content">
         <div class="page-header">
           <div class="container-fluid">
+
+            <form method="get" action="{{ url('product_search', []) }}">
+                <input type="search" name="searchProduct" id="">
+                <input type="submit" class="btn btn-secondary" value="Search">
+            </form>
             
             <div class="div_deg">
                 <table class="table_deg">
