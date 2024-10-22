@@ -26,8 +26,7 @@ services:
       MYSQL_ROOT_PASSWORD: 12345678
     ports:
       - "3569:3306"
-    volumes:
-      - ./mysql/data:/var/lib/mysql
+
   composer:
     build:
       context: ./dockerfiles
