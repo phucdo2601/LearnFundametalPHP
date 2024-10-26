@@ -10,6 +10,7 @@ services:
     depends_on:
       - php
       - mysql
+      - node_env
   php:
     build:
       context: ./dockerfiles
@@ -33,3 +34,13 @@ services:
       dockerfile: composer.dockerfile
     volumes:
       - ./src:/var/www/html
+
+  node_env:
+    build:
+      context: .
+      dockerfile: dockerfiles/node.dockerfile
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./src:/var/www/html:delegated
+      - /var/www/html/node_modules
