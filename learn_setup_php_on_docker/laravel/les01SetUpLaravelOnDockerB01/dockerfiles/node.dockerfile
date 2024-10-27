@@ -1,6 +1,6 @@
 # Use an official Node.js image from Docker hub
 
-FROM node:18
+FROM node:22
 
 # Set up the working directory in the container
 WORKDIR /var/www/html
@@ -11,6 +11,9 @@ COPY src/package*.json ./
 # Install dependencies
 RUN npm install
 
+# Install dependencies using yarn
+RUN yarn install
+
 # Copy application source code from src folder
 COPY src/ .
 
@@ -18,5 +21,5 @@ COPY src/ .
 EXPOSE 3001
 
 # Run the application
-CMD ["npm", "run", "dev"]
+CMD ["yarn", "dev"]
 
