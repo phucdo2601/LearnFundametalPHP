@@ -88,3 +88,8 @@ Route::get('product_search', [AdminController::class, 'product_search'])->middle
     'auth',
     'admin'
 ]);
+
+Route::get('add_cart/{product_id}', [HomeController::class, 'add_cart'])->middleware([
+    'auth',
+    'verified'
+]);
