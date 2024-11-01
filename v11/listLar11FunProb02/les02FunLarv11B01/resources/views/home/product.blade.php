@@ -26,6 +26,9 @@
                 </h6>
               </div>
               
+              <div style="padding:10px">
+                <a href="btn btn-danger" href="{{ url('product_details', [$product->id]) }}">Details</a>
+              </div>
             </a>
           </div>
         </div>
