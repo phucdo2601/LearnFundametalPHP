@@ -10,3 +10,6 @@ Voi cach cai dat moi truong nhu trong file document-setup.txt, mot so cau lenh h
 3. Khi muon cai dat mot thu vien moi:
     + docker compose run -rm composer require lib-name
     + docker compose exec php php artisan lib-name:install (if have)
+
+4. Khi muon khoi tao laravel project voi docker thi su dung cau lenh sau:
+    docker compose run --rm composer create-project --prefer-dist laravel/laravel your-app-name
