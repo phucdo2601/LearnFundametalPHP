@@ -5,7 +5,8 @@ WORKDIR /var/www/html
 # Copy the custom php.ini to the appropriate path
 COPY ./php.ini /usr/local/etc/php/php.ini
 
-# Install necessary system dependencies
+
+# Install necessary system dependencies, including libcurl
 RUN apt-get update && apt-get install -y \
     libcurl4-openssl-dev \
     pkg-config \
@@ -17,10 +18,11 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
+    libmcrypt-dev \
+    libgd-dev \
+    jpegoptim optipng pngquant gifsicle \
     libonig-dev \
-    libxml2-dev \
-    jpegoptim optipng pngquant gifsicle
+    libxml2-dev
 
-# Configure and install the GD extension with WebP, JPEG, and FreeType support
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp
-RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql mysqli curl gd mbstring
+RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg
+RUN docker-php-ext-install pdo pdo_mysql mysqli curl gd mbstring
