@@ -31,6 +31,12 @@
         td {
             border: 1px solid black;
         }
+
+        .cart_value {
+            text-align: center;
+            margin-bottom: 70px;
+            padding: 18px;
+        }
         </style>
 </head>
 
@@ -53,6 +59,10 @@
             <th>Product Image</th>
         </tr>
 
+        <?php
+            $value = 0;
+        ?>
+
         @foreach ($list_user_cart as $cart)
         <tr>
             <td>{{$cart->product->title}}</td>
@@ -61,14 +71,18 @@
                 <img width="150" height="100" src="{{ asset('products') }}/{{$cart->product->image}}" alt="">
             </td>
         </tr>
+
+        <?php
+            $value = $value + $cart->product->price;
+        ?>
         @endforeach
         
     </table>
 </div>
 
-   @foreach ($list_user_cart as $cart)
-       
-   @endforeach
+<div class="cart_value">
+    <h3>Total value of Cart is: {{$value}}</h3>
+</div>
 
   <!-- info section -->
 
