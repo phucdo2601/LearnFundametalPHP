@@ -93,3 +93,10 @@ Route::get('add_cart/{product_id}', [HomeController::class, 'add_cart'])->middle
     'auth',
     'verified'
 ]);
+
+Route::get('mycart', [HomeController::class, "mycart"])->middleware([
+    'auth',
+    'verified'
+])->name('mycart');
+
+
