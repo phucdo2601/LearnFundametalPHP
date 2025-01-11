@@ -46,3 +46,5 @@ Route::middleware(['auth', AuthAdmin::class])->group(function () {
 
 // Shop
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
+// Shop-details
+Route::get('/shop/{product_slug}', [ShopController::class, 'product_details'])->name('shop.product.details');
