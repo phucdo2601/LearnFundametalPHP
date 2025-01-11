@@ -209,7 +209,7 @@ class AdminProductController extends Controller
         $counter = 1;
 
         if ($request->hasFile('images')) {
-            foreach (explode(',', $product->image) as $oldFile) {
+            foreach (explode(',', $product->images) as $oldFile) {
                 if (File::exists(public_path('uploads/products')) . '/' . $oldFile) {
                     File::delete(public_path('uploads/products') . '/' . $oldFile);
                 }
@@ -238,6 +238,30 @@ class AdminProductController extends Controller
         return redirect()->route('admin.products')->with('status', '
             Product has been update successfully!
         ');
+    }
+
+    public function product_delete($product_id)
+    {
+        // $product = DB::select("SELECT * FROM product WHERE id = ?", [$product_id]);
+        $product = Product::find($product_id);
+        if (File::exists(public_path('uploads/products') . "/" . $product->image)) {
+            File::delete(public_path('uploads/products') . "/" . $product->image);
+        }
+        if (File::exists(public_path('uploads/products/thumbnalis')) . '/' . $product->image) {
+            File::delete(public_path('uploads/products/thumbnalis') . '/' . $product->image);
+        }
+
+        foreach (explode(",", $product->images) as $oFile) {
+            if (File::exists(public_path('uploads/products') . '/' . $oFile)) {
+                File::delete(public_path('uploads/products') . '/' . $oFile);
+            }
+            if (File::exists(public_path('uploads/products/thumbnalis') . '/' . $oFile)) {
+                File::delete(public_path('uploads/products/thumbnalis') . '/' . $oFile);
+            }
+        }
+
+        $product->delete();
+        return redirect()->route('admin.products')->with('status', 'Product has been deleted successfully!');
     }
 
     # ADMIN - PRODUCTS Entity end section
