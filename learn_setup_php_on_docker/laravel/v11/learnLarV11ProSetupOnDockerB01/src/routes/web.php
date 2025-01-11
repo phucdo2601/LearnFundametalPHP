@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminBrandController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Front\ShopController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AuthAdmin;
@@ -42,3 +43,6 @@ Route::middleware(['auth', AuthAdmin::class])->group(function () {
     Route::put('/admin/product/update', [AdminProductController::class, 'product_update'])->name('admin.product.update');
     Route::delete('/admin/product/{id}/delete', [AdminProductController::class, 'product_delete'])->name('admin.product.delete');
 });
+
+// Shop
+Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
