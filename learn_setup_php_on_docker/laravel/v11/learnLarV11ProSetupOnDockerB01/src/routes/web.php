@@ -55,3 +55,9 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
 // Shopping Cart: Add functionality
 Route::post('/cart/add', [CartController::class, 'add_to_cart'])->name('cart.add');
+
+// Shopping Cart: Increase cart quantity
+Route::put('/cart/increase/{rowId}', [CartController::class, 'increase_cart_quantity'])->name('cart.qty.increase');
+
+// Shopping Cart: Decrease cart quantity
+Route::put('/cart/decrease/{rowId}', [CartController::class, 'decrease_cart_quantity'])->name('cart.qty.decrease');
