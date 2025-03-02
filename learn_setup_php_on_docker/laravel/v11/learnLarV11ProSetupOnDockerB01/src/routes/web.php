@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminBrandController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\ShopController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -48,3 +49,9 @@ Route::middleware(['auth', AuthAdmin::class])->group(function () {
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 // Shop-details
 Route::get('/shop/{product_slug}', [ShopController::class, 'product_details'])->name('shop.product.details');
+
+// Shopping Cart
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+
+// Shopping Cart: Add functionality
+Route::post('/cart/add', [CartController::class, 'add_to_cart'])->name('cart.add');
