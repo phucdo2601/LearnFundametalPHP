@@ -61,3 +61,9 @@ Route::put('/cart/increase/{rowId}', [CartController::class, 'increase_cart_quan
 
 // Shopping Cart: Decrease cart quantity
 Route::put('/cart/decrease/{rowId}', [CartController::class, 'decrease_cart_quantity'])->name('cart.qty.decrease');
+
+// Shopping Cart: Remove cart functionality
+Route::delete('/cart/remove/{rowId}', [CartController::class, 'remove_item'])->name('cart.item.remove');
+
+// Shopping Cart: Destroy cart
+Route::delete('/cart/clear', [CartController::class, 'empty_cart'])->name('cart.empty');
