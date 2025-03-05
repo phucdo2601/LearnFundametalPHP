@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\ShopController;
+use App\Http\Controllers\Front\WishListController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AuthAdmin;
@@ -67,3 +68,6 @@ Route::delete('/cart/remove/{rowId}', [CartController::class, 'remove_item'])->n
 
 // Shopping Cart: Destroy cart
 Route::delete('/cart/clear', [CartController::class, 'empty_cart'])->name('cart.empty');
+
+// wishlist
+Route::post('/wishlist/add', [WishListController::class, 'add_to_wishlist'])->name('wishlist.add');
