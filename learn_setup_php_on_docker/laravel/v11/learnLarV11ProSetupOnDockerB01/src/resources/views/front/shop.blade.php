@@ -407,6 +407,10 @@
         </div>
 
         @if(Cart::instance("wishlist")->content()->Where('id', $product->id)->count() > 0)
+      <form method="post"
+      action="{{ route('wishlist.item.remove', ['rowId' => Cart::instance("wishlist")->content()->where('id', $product->id)->first()->rowId]) }}">
+      @csrf
+      @method('delete')
       <button type="submit"
       class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist filled-heart"
       title="Add To Wishlist">
@@ -414,6 +418,7 @@
       <use href="#icon_heart" />
       </svg>
       </button>
+      </form>
     @else
     <form method="post" action="{{ route('wishlist.add') }}">
     @csrf
