@@ -71,3 +71,6 @@ Route::delete('/cart/clear', [CartController::class, 'empty_cart'])->name('cart.
 
 // wishlist
 Route::post('/wishlist/add', [WishListController::class, 'add_to_wishlist'])->name('wishlist.add');
+
+// wishlist: get list all wishlist
+Route::get('/wishlist', [WishListController::class, 'index'])->name('wishlist.index');
