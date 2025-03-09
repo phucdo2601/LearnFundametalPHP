@@ -80,3 +80,6 @@ Route::delete("/wishlist/item/remove/{rowId}", [WishListController::class, 'remo
 
 // wishlist: remove all wishlists
 Route::delete('/wishlist/clear', [WishListController::class, 'empty_wishlist'])->name('wishlist.items.clear');
+
+// move product in wishlist to cart
+Route::post('/wishlist/move_to_cart/{rowId}', [WishListController::class, 'move_to_cart'])->name('wishlist.move.to.cart');
