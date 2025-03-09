@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,12 +10,12 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <meta name="author" content="surfside media" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="surfside media" />
 
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.min.css') }}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/animation.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-select.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('font/fonts.css') }}">
@@ -23,7 +24,7 @@
     <link rel="apple-touch-icon-precomposed" href="{{asset('images/favicon.ico')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/sweetalert.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/custom.css')}}">
-  
+
     @stack('styles')
 </head>
 
@@ -42,7 +43,8 @@
                     <div class="box-logo">
                         <a href="{{ route('admin.index', []) }}" id="site-logo-inner">
                             <img class="" id="logo_header_1" alt="" src="{{ asset('images/logo/logo.png') }}"
-                                data-light="{{ asset('images/logo/logo.png')}}" data-dark="{{ asset('images/logo/logo.png')}}">
+                                data-light="{{ asset('images/logo/logo.png')}}"
+                                data-dark="{{ asset('images/logo/logo.png')}}">
                         </a>
                         <div class="button-show-hide">
                             <i class="icon-menu-left"></i>
@@ -53,7 +55,7 @@
                             <div class="center-heading">Main Home</div>
                             <ul class="menu-list">
                                 <li class="menu-item">
-                                    <a  href="{{ route('admin.index', []) }}" class="">
+                                    <a href="{{ route('admin.index', []) }}" class="">
                                         <div class="icon"><i class="icon-grid"></i></div>
                                         <div class="text">Dashboard</div>
                                     </a>
@@ -105,12 +107,12 @@
                                     </a>
                                     <ul class="sub-menu">
                                         <li class="sub-menu-item">
-                                            <a href="{{ route('admin.category.add', ['id'=>1]) }}" class="">
+                                            <a href="{{ route('admin.category.add', ['id' => 1]) }}" class="">
                                                 <div class="text">New Category</div>
                                             </a>
                                         </li>
                                         <li class="sub-menu-item">
-                                            <a href="{{ route('admin.categories', ['id'=>1]) }}" class="">
+                                            <a href="{{ route('admin.categories', ['id' => 1]) }}" class="">
                                                 <div class="text">Categories</div>
                                             </a>
                                         </li>
@@ -142,7 +144,7 @@
                                     </a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="coupons.html" class="">
+                                    <a href="{{ route('admin.coupons') }}" class="">
                                         <div class="icon"><i class="icon-grid"></i></div>
                                         <div class="text">Coupons</div>
                                     </a>
@@ -165,12 +167,13 @@
                                 <li class="menu-item">
                                     <form action="{{route('logout')}}" method="POST" id="logout-form">
                                         @csrf
-                                        <a  href="{{route('logout')}}" class="" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                        <a href="{{route('logout')}}" class=""
+                                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                             <div class="icon"><i class="icon-settings"></i></div>
                                             <div class="text">Logout</div>
                                         </a>
                                     </form>
-                                    
+
                                 </li>
                             </ul>
                         </div>
@@ -182,9 +185,11 @@
                         <div class="wrap">
                             <div class="header-left">
                                 <a href="index-2.html">
-                                    <img class="" id="logo_header_mobile" alt="" src="{{ asset('images/logo/logo.png')}}"
-                                        data-light="{{ asset('images/logo/logo.png')}}" data-dark="{{ asset('images/logo/logo.png')}}"
-                                        data-width="154px" data-height="52px" data-retina="{{ asset('images/logo/logo.png')}}">
+                                    <img class="" id="logo_header_mobile" alt=""
+                                        src="{{ asset('images/logo/logo.png')}}"
+                                        data-light="{{ asset('images/logo/logo.png')}}"
+                                        data-dark="{{ asset('images/logo/logo.png')}}" data-width="154px"
+                                        data-height="52px" data-retina="{{ asset('images/logo/logo.png')}}">
                                 </a>
                                 <div class="button-show-hide">
                                     <i class="icon-menu-left"></i>
@@ -477,8 +482,8 @@
 
     <script src="{{ asset('js/jquery.min.js')}}"></script>
     <script src="{{ asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('js/bootstrap-select.min.js')}}"></script>   
-    <script src="{{ asset('js/sweetalert.min.js')}}"></script>    
+    <script src="{{ asset('js/bootstrap-select.min.js')}}"></script>
+    <script src="{{ asset('js/sweetalert.min.js')}}"></script>
     <script src="{{ asset('js/apexcharts/apexcharts.js')}}"></script>
     <script src="{{ asset('js/main.js')}}"></script>
     <script>
@@ -583,5 +588,5 @@
 
 </body>
 
-  
+
 </html>
