@@ -92,3 +92,9 @@ Route::delete('/wishlist/clear', [WishListController::class, 'empty_wishlist'])-
 
 // move product in wishlist to cart
 Route::post('/wishlist/move_to_cart/{rowId}', [WishListController::class, 'move_to_cart'])->name('wishlist.move.to.cart');
+
+// Add coupon
+Route::post('/cart/apply-coupon', [CartController::class, 'apply_coupon_code'])->name('cart.coupon.apply');
+
+// Remove coupon on cart
+Route::delete('/cart/remove-coupon', [CartController::class, 'remove_coupon_code'])->name('cart.coupon.remove');
