@@ -98,3 +98,6 @@ Route::post('/cart/apply-coupon', [CartController::class, 'apply_coupon_code'])-
 
 // Remove coupon on cart
 Route::delete('/cart/remove-coupon', [CartController::class, 'remove_coupon_code'])->name('cart.coupon.remove');
+
+// checkout page
+Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
