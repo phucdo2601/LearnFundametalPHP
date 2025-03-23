@@ -22,6 +22,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/account-dashboard', [UserController::class, 'index'])->name('user.index');
+    Route::get('/account-orders', [UserController::class, 'orders'])->name('user.orders');
+    Route::get('/account-order/{orderId}/details', [UserController::class, 'order_details'])->name('user.order.details');
 });
 
 Route::middleware(['auth', AuthAdmin::class])->group(function () {
