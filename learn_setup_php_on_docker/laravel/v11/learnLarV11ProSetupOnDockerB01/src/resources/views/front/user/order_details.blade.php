@@ -120,7 +120,7 @@
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered">
+                            <table class="table table-striped table-bordered table-transaction">
                                 <tr>
                                     <th>Order no</th>
                                     <th>{{$order->id}}</th>
