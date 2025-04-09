@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: learn_jquery_ajax_php_mysql_b01
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: learn_jquery_ajax_php_b01
+      MYSQL_USER: phucdn
+      MYSQL_PASSWORD: 12345678
+    ports:
+      - "3330:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
