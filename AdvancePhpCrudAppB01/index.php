@@ -1,9 +1,4 @@
-<?php
-  require_once 'partials/connect.php';
 
-  $dbObj = new Database();
-  // var_dump($dbObj);
-?>
 
 <!doctype html>
 <html lang="en">

@@ -1,5 +1,5 @@
 <?php
-    require_once './connect.php';
+    require_once 'dbConnect.php';
 
     class User extends Database {
         protected $tableName = "user";

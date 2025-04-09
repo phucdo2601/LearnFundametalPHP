@@ -6,7 +6,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
-          <form action="" id="addform" method="POST" enctype="multipart/form-data">
+          <form id="addform" method="POST" enctype="multipart/form-data">
             <div class="modal-body">
 
               <!-- Username -->
