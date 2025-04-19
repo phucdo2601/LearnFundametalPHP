@@ -5,11 +5,14 @@ use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminCouponController;
 use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\ShopController;
 use App\Http\Controllers\Front\WishListController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TestExportCustomExcelController;
+use App\Http\Controllers\TestExportPdfController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AuthAdmin;
 use Illuminate\Support\Facades\Auth;
@@ -61,6 +64,10 @@ Route::middleware(['auth', AuthAdmin::class])->group(function () {
     Route::get('/admin/orders', [AdminOrderController::class, 'orders'])->name('admin.orders');
     Route::get('/admin/order/{orderId}/details', [AdminOrderController::class, 'order_details'])->name('admin.order.details');
     Route::put('/admin/order/update-status', [AdminOrderController::class, 'update_order_status'])->name('admin.order.status.update');
+
+    // Slides
+    Route::get('/admin/slides', [AdminSlideController::class, 'slides'])->name('admin.slides');
+    Route::get('/admin/slide/add', [AdminSlideController::class, 'slide_add'])->name('admin.slide.add');
 });
 
 // Shop
@@ -115,3 +122,6 @@ Route::post('/place-an-order', [CartController::class, 'place_an_order'])->name(
 Route::get('/order-confirmation', [CartController::class, 'order_confirmation'])->name('cart.order.confirmation');
 
 Route::put('/account-order/cancel-order', [UserController::class, 'order_cancel'])->name('user.order.cancel');
+
+Route::get('/test-export-pdf', [TestExportPdfController::class, 'testExportPdf'])->name('testexportpdf');
+Route::get('/test-export-excel', [TestExportCustomExcelController::class, 'downloadExcel01'])->name('downloadExcel');
