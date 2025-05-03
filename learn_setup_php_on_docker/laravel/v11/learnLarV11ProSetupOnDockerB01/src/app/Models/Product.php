@@ -39,4 +39,13 @@ class Product extends Model
     {
         return $this->belongsTo(Brand::class, 'brand_id');
     }
+
+    /**
+     * Test unit test in php laravel
+     */
+    public function customName(): bool
+    {
+        $result = str_replace('-', ' ', $this->slug) === $this->name;
+        return $result;
+    }
 }
